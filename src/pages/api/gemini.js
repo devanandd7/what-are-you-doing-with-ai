@@ -1,4 +1,16 @@
 import fetch from "node-fetch";
+require('dotenv').config();
+
+
+
+
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '10mb', // or whatever limit you need
+    },
+  },
+};
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -10,7 +22,8 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Missing imageDataUrl or text" });
   }
 
-  const apiKey = process.env.apiKey; // <-- Replace with your Gemini API key
+  const apiKey = process.env.GEMINI_API_KEY ||"AIzaSyAIjp9sfctu249bXfyB4UTDmScxdgi-f7c" ; // Securely loaded from .env.local
+  console.log("Using API", apiKey ? "provided" : "not provided");
   const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
   const base64Image = imageDataUrl ? imageDataUrl.split(",")[1] : null;
 
@@ -28,7 +41,7 @@ export default async function handler(req, res) {
             },
            
             {
-              text: `Analyze this image in detail. Describe its content, including objects, people, and any discernible context or activity.
+              text: `Give response In Hinglish ,Analyze this image in detail. Describe its content, including objects, people, and any discernible context or activity.
     Current time.
 
     Based on the visual cues and considering the previous analyses provided (if any), infer what the user is doing or attempting to do.
@@ -43,7 +56,7 @@ export default async function handler(req, res) {
     Provide a general, insightful analysis of their current activity and surroundings. Ask an open-ended question related to their activity or the image.
 
     **Important:** Respond in a mix of Hindi and English (Hinglish) where appropriate, especially for conversational parts. Ensure the response is concise and insightful.
-IF you studing than show the answer, teach them , guide them and generate response in hinglish`,
+IF you studing than show the answer, teach them , guide them and generate response and tell the solution if user studying...`,
             },
           ],
         },
@@ -72,10 +85,8 @@ IF you studing than show the answer, teach them , guide them and generate respon
 
     if (!response.ok) {
       const error = await response.text();
-      console.error("Gemini API error:", error);
-      return res
-        .status(500)
-        .json({ error: "Gemini API error", details: error });
+      console.error("Gemini API error:", error); // This will help you debug
+      return res.status(500).json({ error: "Gemini API error", details: error });
     }
 
     const data = await response.json();
