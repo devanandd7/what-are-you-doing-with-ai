@@ -23,7 +23,7 @@ export const queueAnalysisRequest = async (imageDataUrl, imageHash) => {
   // Add to queue
   return apiQueue.add(async () => {
     try {
-      const response = await fetch('/api/gemini-optimized', {
+      const response = await fetch('/api/gemini', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ imageDataUrl, imageHash }),

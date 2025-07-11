@@ -1,11 +1,11 @@
 
 import React from 'react';
-import OptimizedCameraCapture from '../components/OptimizedCameraCapture';
+import EnhancedCameraCapture from '../components/EnhancedCameraCapture';
 
 function App() {
   return (
     <div className="min-h-screen">
-      <OptimizedCameraCapture />
+      <EnhancedCameraCapture />
     </div>
   );
 }

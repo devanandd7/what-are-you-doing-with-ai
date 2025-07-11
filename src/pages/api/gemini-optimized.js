@@ -51,15 +51,7 @@ Based on the visual cues and considering the previous analyses provided (if any)
 
 **If the user appears to be studying, doing homework, or engaged in a learning activity:**
 Provide helpful instructions, tips, or motivational suggestions related to their apparent task. Use a supportive and encouraging tone.
-
-**If the current time is after 10:00 PM and before 6:00 AM (late night/early morning) AND the user looks relaxed, tired, or is not actively engaged in a task:**
-Switch to a casual, friendly, and conversational tone. Compliment their effort or appearance, ask about what they're learning or doing, and gently suggest resting. Use warm encouragement in Hinglish.
-
-**Otherwise:**
-Provide a general, insightful analysis of their current activity and surroundings. Ask an open-ended question related to their activity or the image.
-
-**Important:** Respond in a mix of Hindi and English (Hinglish) where appropriate. Ensure the response is concise and insightful.
-IF you studying than show the answer, teach them, guide them and generate response and tell the solution if user studying...`,
+`,
           },
         ],
       }],
