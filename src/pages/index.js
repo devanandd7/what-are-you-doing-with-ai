@@ -873,7 +873,16 @@ const CameraCapturePage = () => {
                     image_{(index + 1).toString().padStart(3, '0')}.png
                   </div>
                   <div className="w-full mt-3 p-2 bg-gray-50 border border-gray-200 rounded text-base text-gray-800 font-medium text-center min-h-[48px] flex items-center justify-center">
-                    {aiResponses[imgSrc] || 'Analyzing...'}
+                    <div
+                      style={{ maxHeight: '120px', overflowY: 'auto', width: '100%', textAlign: 'left', whiteSpace: 'pre-line', wordBreak: 'break-word' }}
+                      className="scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 px-2"
+                    >
+                      {aiResponses[imgSrc] ? (
+                        <>{aiResponses[imgSrc]}</>
+                      ) : (
+                        'Analyzing...'
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
