@@ -477,10 +477,12 @@ const EnhancedCameraCapture = () => {
       showSuccessMessage(`Collection "${currentCollectionName}" saved with ${captureCount} photos.`);
     }
     
-    // Only use existing stepAnalyses for the final summary
-    const combinedInsights = stepAnalyses.map((step, idx) => `Step ${step.step}: ${step.combined}`).filter(Boolean);
-    if (combinedInsights.length > 0) {
-      const summaryPrompt = `You are an activity analysis AI. Here is a sequence of steps, each with a combined camera and screen image analysis. Based on the sequence, deduce what the user was doing overall, the flow of their activity, and provide a final conclusion about their intent or goal.\n${combinedInsights.join('\n')}`;
+    // Gather all stepwise responses
+    const allStepDetails = stepAnalyses.map((step, idx) =>
+      `---\n**Step ${step.step}**\n- **Camera:**\n${step.camera}\n- **Screen:**\n${step.screen || 'N/A'}\n- **Combined Insight:**\n${step.combined}\n`
+    ).join('\n');
+    if (stepAnalyses.length > 0) {
+      const summaryPrompt = `You are a brilliant, friendly, and witty AI assistant. Here is a sequence of stepwise analyses from a live camera and screen capture session. Each step includes a camera analysis, a screen analysis, and a combined insight.\n\nReview all steps and synthesize a smart, insightful, and engaging overall conclusion for the user.\n\n**Instructions:**\n- Use GitHub-flavored Markdown\n- Start with a creative section header (e.g., 🏁 Final Activity Conclusion, 🧩 Big Picture, 🎯 What It All Means)\n- Summarize the flow and intent of the user's activity\n- Highlight key patterns, changes, or surprises\n- Offer actionable advice, encouragement, or a curious follow-up question\n- Use emojis and a clever, helpful tone\n\n**Stepwise Details:**\n${allStepDetails}`;
       try {
         const summary = await analyzeMultimodal({ context: 'Final Activity Conclusion', voiceText: summaryPrompt });
         setFinalAiSummary(summary);
