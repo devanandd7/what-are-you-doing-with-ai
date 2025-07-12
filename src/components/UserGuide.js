@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { 
   HelpCircle, X, Camera, Play, Square, Monitor, MessageCircle, 
   Settings, Save, Download, Eye, Mic, Volume2, ScreenShare,
-  ChevronRight, ChevronDown, Info, Lightbulb, Zap
+  ChevronRight, ChevronDown, Info, Lightbulb, Zap, Smartphone,
+  CheckCircle, AlertCircle
 } from 'lucide-react';
 
 const UserGuide = () => {
@@ -158,6 +159,79 @@ const UserGuide = () => {
             <div className="p-3 bg-gray-50 rounded-lg">
               <h4 className="font-semibold text-gray-800 mb-1">🌙 Late Night Mode</h4>
               <p className="text-sm text-gray-600">AI automatically switches to friendly, caring tone after 10 PM to encourage healthy study habits.</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    mobile: {
+      title: 'Mobile Support',
+      icon: <Smartphone className="w-5 h-5" />,
+      content: (
+        <div className="space-y-4">
+          <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+            <h4 className="font-semibold text-orange-800 mb-2">📱 Mobile Device Compatibility</h4>
+            <p className="text-sm text-orange-700 mb-3">
+              This app works on mobile devices, but some features have limitations:
+            </p>
+            <div className="space-y-2">
+              <div className="flex items-start gap-2">
+                <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                <div>
+                  <span className="text-sm font-medium text-green-800">Camera Capture:</span>
+                  <span className="text-sm text-green-700"> Fully supported on all mobile devices</span>
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <AlertCircle className="w-4 h-4 text-yellow-600 mt-0.5 flex-shrink-0" />
+                <div>
+                  <span className="text-sm font-medium text-yellow-800">Screen Sharing:</span>
+                  <span className="text-sm text-yellow-700"> Limited support - works best on Chrome/Firefox Android or Safari iOS</span>
+                </div>
+              </div>
+              <div className="flex items-start gap-2">
+                <AlertCircle className="w-4 h-4 text-yellow-600 mt-0.5 flex-shrink-0" />
+                <div>
+                  <span className="text-sm font-medium text-yellow-800">Voice Chat:</span>
+                  <span className="text-sm text-yellow-700"> May have limited support on some mobile browsers</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="space-y-3">
+            <div className="p-3 bg-blue-50 rounded-lg">
+              <h4 className="font-semibold text-blue-800 mb-1">📱 Mobile Screen Sharing Tips</h4>
+              <ul className="text-sm text-blue-700 space-y-1">
+                <li>• Use Chrome 72+ or Firefox 66+ on Android</li>
+                <li>• Use Safari on iOS 11+</li>
+                <li>• Make sure you're using HTTPS or localhost</li>
+                <li>• Allow screen sharing when prompted</li>
+                <li>• Try sharing a specific tab instead of entire screen</li>
+                <li>• If screen sharing fails, use camera capture instead</li>
+              </ul>
+            </div>
+            
+            <div className="p-3 bg-green-50 rounded-lg">
+              <h4 className="font-semibold text-green-800 mb-1">📸 Mobile Camera Tips</h4>
+              <ul className="text-sm text-green-700 space-y-1">
+                <li>• Hold device steady for better image quality</li>
+                <li>• Ensure good lighting for clearer photos</li>
+                <li>• Position camera to show your work clearly</li>
+                <li>• Use landscape mode for wider shots</li>
+                <li>• Keep device charged during long sessions</li>
+              </ul>
+            </div>
+            
+            <div className="p-3 bg-purple-50 rounded-lg">
+              <h4 className="font-semibold text-purple-800 mb-1">🔧 Mobile Performance</h4>
+              <ul className="text-sm text-purple-700 space-y-1">
+                <li>• Close other apps for better performance</li>
+                <li>• Use WiFi for faster uploads</li>
+                <li>• Images are automatically optimized for mobile</li>
+                <li>• Live Action uses mobile-optimized settings</li>
+                <li>• Collections are saved locally on your device</li>
+              </ul>
             </div>
           </div>
         </div>
